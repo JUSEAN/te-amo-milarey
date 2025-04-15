@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Puzzle</title>
+  <link rel="stylesheet" href="CSS/puzzle.css" />
+</head>
+<body>
+
+  <!-- Emojis decorativos flotantes -->
+  <div class="background-decor">🎀</div>
+  <div class="background-decor">💖</div>
+  <div class="background-decor">✨</div>
+  <div class="background-decor">🌸</div>
+  <div class="background-decor">💝</div>
+  <div class="background-decor">🌷</div>
+  <div class="background-decor">💕</div>
+
+  <!-- Texto antes del puzzle -->
+  <div id="mensaje">
+    <h1>¡Vamos a armar el puzzle!</h1>
+    <p>Arrastra las piezas y colócalas en su lugar para completar la imagen.</p>
+  </div>
+
+  <!-- Texto encima del puzzle -->
+  <div id="instrucciones">
+    <h2>Arma este recuerdo</h2>
+  </div>
+
+  <div id="puzzle" style="display: none;">
+    <div id="grid" style="display: grid; grid-template-columns: repeat(3, 100px); grid-template-rows: repeat(3, 100px); gap: 2px;"></div>
+  </div>
+
+  <!-- Texto de felicitaciones y botón -->
+  <div id="felicitacion" style="display: none;">
+    <h2>"Aww, desbloqueaste el primer recuerdo... ¡Muyy biennnnn, mi niña! Todavía me acuerdo de esa noche tan linda en la que nos levantamos a medianoche solo para comer piña."</h2>
+    <button onclick="irAlSiguiente()">Ir al siguiente nivel</button>
+  </div>
+
+  <!-- Reproductor de música de fondo -->
+  <audio id="musicaFondo" autoplay loop>
+    <source src="MUSIC/song2.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+  <script>
+    document.addEventListener("click", () => {
+      const audio = document.getElementById("musicaFondo");
+      if (audio.paused) {
+        audio.play();
+      }
+    }, { once: true });
+  </script>
+
+  <script src="JS/puzzle.js"></script>
+</body>
+</html>

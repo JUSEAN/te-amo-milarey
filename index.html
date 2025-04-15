@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Cumpleaños Mi Princesita</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Emojis decorativos flotantes -->
+  <div class="background-decor">🎀</div>
+  <div class="background-decor">💖</div>
+  <div class="background-decor">✨</div>
+  <div class="background-decor">🌸</div>
+  <div class="background-decor">💝</div>
+  <div class="background-decor">🌷</div>
+  <div class="background-decor">💕</div>
+
+  <!-- Contenedor principal -->
+  <div class="d1">
+    <h1>FELIZ CUMPLEAÑOS MI PRINCESITA</h1>
+    <p id="mensaje"></p>
+    <button class="boton-puzzle" onclick="location.href='puzzle.html'">Ir al Puzzle</button>
+  </div>
+
+  <!-- Contenedor de corazones flotantes -->
+  <div id="hearts-container"></div>
+
+  <!-- Reproductor de música de fondo -->
+  <audio id="musicaFondo" autoplay loop>
+    <source src="MUSIC/song1.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+  <script src="JS/index.js"></script>
+
+  <script>
+    document.addEventListener("click", () => {
+      const audio = document.getElementById("musicaFondo");
+      if (audio.paused) {
+        audio.play();
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>

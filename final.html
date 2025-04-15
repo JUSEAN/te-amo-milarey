@@ -37,46 +37,13 @@
   <script src="JS/final.js"></script>
 
   <script>
-    // Manejo de música en esta página
-    (function() {
+    document.addEventListener("click", () => {
       const audio = document.getElementById("musicaFondo");
-      let iniciado = false;
-  
-      // Detener si ya se está reproduciendo por error
-      if (!audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
+      if (audio.paused) {
+        audio.play();
       }
-  
-      audio.volume = 0.6;
-  
-      const iniciarMusica = () => {
-        if (!iniciado) {
-          audio.play().catch(err => {
-            console.warn("Error al iniciar música:", err);
-          });
-          iniciado = true;
-        }
-      };
-  
-      document.addEventListener("click", iniciarMusica, { once: true });
-      document.addEventListener("touchstart", iniciarMusica, { once: true });
-  
-      // ✅ Al salir de la página: PAUSAR y REINICIAR el audio
-      window.addEventListener("pagehide", () => {
-        if (!audio.paused) {
-          audio.pause();
-          audio.currentTime = 0;
-        }
-      });
-  
-      window.addEventListener("beforeunload", () => {
-        if (!audio.paused) {
-          audio.pause();
-          audio.currentTime = 0;
-        }
-      });
-    })();
+    }, { once: true });
   </script>
+  
 </body>
 </html>

@@ -1,129 +1,141 @@
 /* Estilos generales del puzzle */
-body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ffe0f0, #e0c3fc);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-    flex-direction: column;
-  }
-  
-  /* Emojis decorativos posicionados aleatoriamente */
-  .background-decor {
-    position: absolute;
-    font-size: 2rem;
-    opacity: 0.15;
-    pointer-events: none;
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .background-decor:nth-child(1) { top: 5%; left: 10%; animation-duration: 7s; }
-  .background-decor:nth-child(2) { top: 20%; left: 70%; animation-duration: 6s; }
-  .background-decor:nth-child(3) { top: 40%; left: 30%; animation-duration: 8s; }
-  .background-decor:nth-child(4) { top: 60%; left: 80%; animation-duration: 5.5s; }
-  .background-decor:nth-child(5) { top: 75%; left: 15%; animation-duration: 7.5s; }
-  .background-decor:nth-child(6) { top: 85%; left: 60%; animation-duration: 6.5s; }
-  .background-decor:nth-child(7) { top: 50%; left: 50%; animation-duration: 7s; }
-  
-  @keyframes float {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(10px); }
-    100% { transform: translateY(0) translateX(0); }
-  }
-  
-  /* Estilo del mensaje de instrucciones */
-  #mensaje {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #5c3d73;
-    display: block;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffe0f0, #e0c3fc);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Emojis decorativos */
+.background-decor {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.15;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+.background-decor:nth-child(1) { top: 5%; left: 10%; animation-duration: 7s; }
+.background-decor:nth-child(2) { top: 20%; left: 70%; animation-duration: 6s; }
+.background-decor:nth-child(3) { top: 40%; left: 30%; animation-duration: 8s; }
+.background-decor:nth-child(4) { top: 60%; left: 80%; animation-duration: 5.5s; }
+.background-decor:nth-child(5) { top: 75%; left: 15%; animation-duration: 7.5s; }
+.background-decor:nth-child(6) { top: 85%; left: 60%; animation-duration: 6.5s; }
+.background-decor:nth-child(7) { top: 50%; left: 50%; animation-duration: 7s; }
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* Texto inicial */
+#mensaje {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5c3d73;
+  display: block;
+  padding: 20px;
+  z-index: 10;
+}
+
+#instrucciones {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #5c3d73;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+/* Puzzle */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 2px;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+.tile {
+  width: 100px;
+  height: 100px;
+  background-size: 300px 300px;
+  background-repeat: no-repeat;
+  border: 2px solid #fff;
+  cursor: grab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.tile:active {
+  cursor: grabbing;
+}
+
+/* Felicitación y botón */
+#felicitacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5c3d73;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+button {
+  background-color: #5c3d73;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #5c3c99;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
     padding: 20px;
+    justify-content: flex-start;
   }
-  
-  #instrucciones {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #5c3d73;
-    margin-top: 20px;
-  }
-  
-  /* Estilo del puzzle */
+
   #grid {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 2px;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 4px;
   }
-  
-  .tile {
-    width: 100px;
-    height: 100px;
-    background-size: 300px 300px;
-    background-repeat: no-repeat;
-    border: 2px solid #fff;
-    cursor: grab;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease;
-  }
-  
-  .tile:active {
-    cursor: grabbing;
-  }
-  
-  /* Estilo de felicitación y botón */
+
+  #mensaje,
+  #instrucciones,
   #felicitacion {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #5c3d73;
-    margin-top: 20px;
+    font-size: 1.2rem;
+    padding: 10px;
   }
-  
+
   button {
-    background-color: #5c3d73;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
     font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 12px 25px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 300px;
   }
-  
-  button:hover {
-    background-color: #5c3c99;
-  }
-  
-  /* Responsividad */
-  @media (max-width: 600px) {
-    #grid {
-      grid-template-columns: repeat(3, 80px);
-      grid-template-rows: repeat(3, 80px);
-    }
-  
-    #mensaje {
-      font-size: 1.2rem;
-      padding: 15px;
-    }
-  
-    #instrucciones {
-      font-size: 1.4rem;
-    }
-  
-    #felicitacion {
-      font-size: 1.2rem;
-    }
-  
-    button {
-      font-size: 1rem;
-      padding: 12px 25px;
-    }
-  }
-  
+}

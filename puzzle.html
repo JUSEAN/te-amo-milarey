@@ -38,6 +38,21 @@
     <button onclick="irAlSiguiente()">Ir al siguiente nivel</button>
   </div>
 
+    <!-- Reproductor de música de fondo -->
+  <audio id="musicaFondo" autoplay loop>
+    <source src="MUSIC/song2.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+    <script>
+    document.addEventListener("click", () => {
+      const audio = document.getElementById("musicaFondo");
+      if (audio.paused) {
+        audio.play();
+      }
+    }, { once: true });
+  </script>
+  
   <script src="JS/puzzle.js"></script>
 </body>
 </html>

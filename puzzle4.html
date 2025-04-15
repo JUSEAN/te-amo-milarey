@@ -49,26 +49,16 @@
     Tu navegador no soporta la reproducción de audio.
   </audio>
 
+  <script>
+    document.addEventListener("click", () => {
+      const audio = document.getElementById("musicaFondo");
+      if (audio.paused) {
+        audio.play();
+      }
+    }, { once: true });
+  </script>
+
 
   <script src="JS/puzzle4.js"></script>
-
-  <script>
-    // Asegura que solo se intente reproducir una vez y de forma controlada
-    let musicaIniciada = false;
-
-    const iniciarMusica = () => {
-      if (!musicaIniciada) {
-        const audio = document.getElementById("musicaFondo");
-        audio.volume = 0.6; // Volumen moderado
-        audio.play().catch(e => console.warn("Reproducción bloqueada:", e));
-        musicaIniciada = true;
-      }
-    };
-
-    // Espera la primera interacción del usuario
-    document.addEventListener("click", iniciarMusica, { once: true });
-    document.addEventListener("touchstart", iniciarMusica, { once: true }); // para móviles
-  </script>
-  
 </body>
 </html>
